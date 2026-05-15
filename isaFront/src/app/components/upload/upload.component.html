@@ -1,0 +1,100 @@
+<div class="upload-container">
+  <div class="upload-card">
+    <h2>Postavi novi video</h2>
+
+    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="title">Naslov *</label>
+        <input
+          type="text"
+          id="title"
+          formControlName="title"
+          placeholder="Naslov videa"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Opis *</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          rows="4"
+          placeholder="Opiši video..."
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="tagsInput">Tagovi (odvojeni zarezom)</label>
+        <input
+          type="text"
+          id="tagsInput"
+          formControlName="tagsInput"
+          placeholder="muzika, zabava, sport"
+        />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="latitude">Geografska širina (latitude)</label>
+          <input
+            type="number"
+            id="latitude"
+            formControlName="latitude"
+            step="any"
+            placeholder="45.2671"
+          />
+        </div>
+
+        <div class="form-group half">
+          <label for="longitude">Geografska dužina (longitude)</label>
+          <input
+            type="number"
+            id="longitude"
+            formControlName="longitude"
+            step="any"
+            placeholder="19.8335"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="thumbnail">Thumbnail (slika) *</label>
+        <input
+          type="file"
+          id="thumbnail"
+          accept="image/*"
+          (change)="onThumbnailSelected($event)"
+        />
+        <small *ngIf="thumbnailFile">Izabrano: {{ thumbnailFile.name }}</small>
+      </div>
+
+      <div class="form-group">
+        <label for="video">Video (mp4, max 200MB) *</label>
+        <input
+          type="file"
+          id="video"
+          accept="video/mp4"
+          (change)="onVideoSelected($event)"
+        />
+        <small *ngIf="videoFile">Izabrano: {{ videoFile.name }} ({{ (videoFile.size / 1024 / 1024).toFixed(2) }} MB)</small>
+      </div>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <div class="success-message" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Postavlja se...' : 'Postavi video' }}
+      </button>
+
+      <p class="link-text">
+        <a routerLink="/home">Otkaži</a>
+      </p>
+    </form>
+  </div>
+</div>

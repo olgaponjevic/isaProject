@@ -1,0 +1,60 @@
+<div class="profile-container">
+
+  <header class="navbar">
+    <h1 (click)="goHome()" class="logo">Jutjubić</h1>
+    <div class="nav-actions" *ngIf="authService.isLoggedIn()">
+      <span class="user-info">Pozdrav, {{ authService.getUsername() }}!</span>
+      <a routerLink="/upload" class="btn-primary">+ Novi video</a>
+      <button (click)="logout()" class="btn-secondary">Odjavi se</button>
+    </div>
+    <div class="nav-actions" *ngIf="!authService.isLoggedIn()">
+      <a routerLink="/login" class="btn-primary">Prijavi se</a>
+      <a routerLink="/register" class="btn-secondary">Registruj se</a>
+    </div>
+  </header>
+
+  <main class="content">
+
+    <a (click)="goHome()" class="back-link">← Nazad na sve videe</a>
+
+    <div *ngIf="loading" class="info-message">Učitavanje...</div>
+
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <div *ngIf="profile">
+      <div class="profile-header">
+        <div class="avatar">{{ profile.firstName[0] }}{{ profile.lastName[0] }}</div>
+        <div class="profile-info">
+          <h2>{{ profile.firstName }} {{ profile.lastName }}</h2>
+          <p class="username">{{ profile.username }}</p>
+          <p class="video-count">{{ videos.length }} {{ videos.length === 1 ? 'video' : 'videa' }}</p>
+        </div>
+      </div>
+
+      <h3 class="section-title">Postavljeni videi</h3>
+
+      <div *ngIf="videos.length === 0" class="info-message">
+        Korisnik još nema postavljenih videa.
+      </div>
+
+      <div class="video-grid" *ngIf="videos.length > 0">
+        <div class="video-card" *ngFor="let video of videos" [routerLink]="['/video', video.id]">
+          <img
+            [src]="apiBaseUrl + video.thumbnailUrl"
+            [alt]="video.title"
+            class="thumbnail"
+          />
+          <div class="video-info">
+            <h3>{{ video.title }}</h3>
+            <p class="date">{{ formatDate(video.createdAt) }} • {{ video.views }} pregleda</p>
+            <div class="tags" *ngIf="video.tags.length > 0">
+              <span class="tag" *ngFor="let tag of video.tags">#{{ tag }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</div>

@@ -1,0 +1,50 @@
+.activate-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding: 20px;
+}
+
+.activate-card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 16px;
+  color: #333;
+}
+
+h2.success {
+  color: #2d8a3e;
+}
+
+h2.error {
+  color: #d9534f;
+}
+
+p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+a {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: #4a90e2;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+a:hover {
+  background-color: #357abd;
+}

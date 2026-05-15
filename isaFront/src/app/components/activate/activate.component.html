@@ -1,0 +1,22 @@
+<div class="activate-container">
+  <div class="activate-card">
+
+    <div *ngIf="loading">
+      <h2>Aktiviram nalog...</h2>
+      <p>Molimo sačekaj trenutak.</p>
+    </div>
+
+    <div *ngIf="!loading && success">
+      <h2 class="success">✓ Nalog uspešno aktiviran!</h2>
+      <p>Bićeš preusmerena na stranicu za prijavu...</p>
+      <a routerLink="/login">Prijavi se odmah</a>
+    </div>
+
+    <div *ngIf="!loading && errorMessage">
+      <h2 class="error">✗ Greška</h2>
+      <p>{{ errorMessage }}</p>
+      <a routerLink="/login">Idi na prijavu</a>
+    </div>
+
+  </div>
+</div>

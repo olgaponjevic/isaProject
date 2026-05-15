@@ -1,0 +1,117 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Registracija</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="primer@email.com"
+        />
+        <small class="error" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+          Unesi validan email
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="username">Korisničko ime</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          placeholder="Bar 3 karaktera"
+        />
+        <small class="error" *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid">
+          Korisničko ime mora imati bar 3 karaktera
+        </small>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group half">
+          <label for="firstName">Ime</label>
+          <input
+            type="text"
+            id="firstName"
+            formControlName="firstName"
+            placeholder="Ana"
+          />
+          <small class="error" *ngIf="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid">
+            Ime je obavezno
+          </small>
+        </div>
+
+        <div class="form-group half">
+          <label for="lastName">Prezime</label>
+          <input
+            type="text"
+            id="lastName"
+            formControlName="lastName"
+            placeholder="Anić"
+          />
+          <small class="error" *ngIf="registerForm.get('lastName')?.touched && registerForm.get('lastName')?.invalid">
+            Prezime je obavezno
+          </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Adresa</label>
+        <input
+          type="text"
+          id="address"
+          formControlName="address"
+          placeholder="Bulevar oslobođenja 1, Novi Sad"
+        />
+        <small class="error" *ngIf="registerForm.get('address')?.touched && registerForm.get('address')?.invalid">
+          Adresa je obavezna
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Lozinka</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Bar 6 karaktera"
+        />
+        <small class="error" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+          Lozinka mora imati bar 6 karaktera
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Potvrda lozinke</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          placeholder="Ponovi lozinku"
+        />
+        <small class="error" *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.errors?.['passwordMismatch']">
+          Lozinke se ne poklapaju
+        </small>
+      </div>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <div class="success-message" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+
+      <button type="submit" [disabled]="registerForm.invalid || loading">
+        {{ loading ? 'Registracija...' : 'Registruj se' }}
+      </button>
+
+      <p class="link-text">
+        Već imaš nalog? <a routerLink="/login">Prijavi se</a>
+      </p>
+    </form>
+  </div>
+</div>

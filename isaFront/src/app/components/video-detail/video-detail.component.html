@@ -1,0 +1,56 @@
+<div class="detail-container">
+
+    <header class="navbar">
+        <h1 (click)="goBack()" class="logo">Jutjubić</h1>
+        <div class="nav-actions" *ngIf="authService.isLoggedIn()">
+            <span class="user-info">Pozdrav, {{ authService.getUsername() }}!</span>
+            <a routerLink="/upload" class="btn-primary">+ Novi video</a>
+            <button (click)="logout()" class="btn-secondary">Odjavi se</button>
+        </div>
+        <div class="nav-actions" *ngIf="!authService.isLoggedIn()">
+            <a routerLink="/login" class="btn-primary">Prijavi se</a>
+            <a routerLink="/register" class="btn-secondary">Registruj se</a>
+        </div>
+    </header>
+
+    <main class="content">
+
+        <a (click)="goBack()" class="back-link">← Nazad na sve videe</a>
+
+        <div *ngIf="loading" class="info-message">Učitavanje...</div>
+
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+        <div *ngIf="video" class="video-wrapper">
+            <video [src]="apiBaseUrl + video.videoUrl" controls class="video-player"></video>
+
+            <div class="video-meta">
+                <h2>{{ video.title }}</h2>
+
+                <div class="meta-row">
+                    <a [routerLink]="['/profile', video.authorId]" class="author">{{ video.authorUsername }}</a>
+                    <span class="separator">•</span>
+                    <span class="date">{{ formatDate(video.createdAt) }}</span>
+                    <span class="separator">•</span>
+                    <span class="views">{{ video.views }} pregleda</span>
+                </div>
+
+                <div class="tags" *ngIf="video.tags.length > 0">
+                    <span class="tag" *ngFor="let tag of video.tags">#{{ tag }}</span>
+                </div>
+
+                <div class="description">
+                    <h3>Opis</h3>
+                    <p>{{ video.description }}</p>
+                </div>
+
+                <div class="location" *ngIf="video.latitude !== null && video.longitude !== null">
+                    <h3>Lokacija</h3>
+                    <p>{{ video.latitude }}, {{ video.longitude }}</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</div>
