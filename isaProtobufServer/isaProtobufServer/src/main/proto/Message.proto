@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.example.isaProtobufServer.proto";
+option java_outer_classname = "MessageProto";
+
+message Request {
+  int32 id = 1;
+  string content = 2;
+  int64 timestamp = 3;
+}
+
+message Response {
+  int32 id = 1;
+  string content = 2;
+  int64 timestamp = 3;
+  string serverInfo = 4;
+}
