@@ -1,0 +1,54 @@
+<div class="comments-section">
+
+  <h3 class="section-title">Komentari ({{ totalComments }})</h3>
+
+  <div class="comment-form" *ngIf="authService.isLoggedIn()">
+    <textarea
+      [(ngModel)]="newComment"
+      placeholder="Napiši komentar..."
+      rows="3"
+      maxlength="2000"
+      [disabled]="posting"
+    ></textarea>
+
+    <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <div class="success-message" *ngIf="successMessage">{{ successMessage }}</div>
+
+    <button (click)="onSubmit()" [disabled]="posting || !newComment.trim()">
+      {{ posting ? 'Slanje...' : 'Pošalji komentar' }}
+    </button>
+  </div>
+
+  <div class="login-prompt" *ngIf="!authService.isLoggedIn()">
+    <a routerLink="/login">Prijavite se</a> da biste mogli da ostavljate komentare.
+  </div>
+
+  <div *ngIf="loading" class="info-message">Učitavanje komentara...</div>
+
+  <div *ngIf="!loading && comments.length === 0" class="info-message">
+    Još nema komentara. Budi prvi!
+  </div>
+
+  <div class="comments-list" *ngIf="!loading && comments.length > 0">
+    <div class="comment" *ngFor="let comment of comments">
+      <div class="comment-header">
+        <a [routerLink]="['/profile', comment.authorId]" class="comment-author">
+          {{ comment.authorUsername }}
+        </a>
+        <span class="comment-date">{{ formatDate(comment.createdAt) }}</span>
+      </div>
+      <p class="comment-content">{{ comment.content }}</p>
+    </div>
+  </div>
+
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="previousPage()" [disabled]="currentPage === 0">
+      ← Prethodna
+    </button>
+    <span class="page-info">Strana {{ currentPage + 1 }} od {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">
+      Sledeća →
+    </button>
+  </div>
+
+</div>

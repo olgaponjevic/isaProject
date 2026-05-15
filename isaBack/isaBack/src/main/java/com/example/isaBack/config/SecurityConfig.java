@@ -37,6 +37,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/videos/**").permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/videos/*/comments").authenticated()
                         .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/videos/**").authenticated()
                         .requestMatchers("/api/files/**").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/users/**").permitAll()

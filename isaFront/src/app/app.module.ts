@@ -13,6 +13,8 @@ import { ActivateComponent } from './components/activate/activate.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { VideoDetailComponent } from './components/video-detail/video-detail.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FormsModule } from '@angular/forms';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,15 @@ import { ProfileComponent } from './components/profile/profile.component';
     ActivateComponent,
     UploadComponent,
     VideoDetailComponent,
-    ProfileComponent
+    ProfileComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {

@@ -1,0 +1,173 @@
+.comments-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #eee;
+}
+
+.section-title {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.comment-form {
+  margin-bottom: 24px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.comment-form textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.comment-form button {
+  margin-top: 8px;
+  padding: 8px 20px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.comment-form button:hover:not(:disabled) {
+  background-color: #357abd;
+}
+
+.comment-form button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.login-prompt {
+  background-color: #f0f2f5;
+  padding: 16px;
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #555;
+}
+
+.login-prompt a {
+  color: #4a90e2;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.login-prompt a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: #d9534f;
+  background-color: #f9e3e3;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.success-message {
+  color: #2d8a3e;
+  background-color: #e3f5e7;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.info-message {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+  font-size: 14px;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comment {
+  padding: 14px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.comment-author {
+  color: #4a90e2;
+  font-weight: 500;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.comment-author:hover {
+  text-decoration: underline;
+}
+
+.comment-date {
+  color: #888;
+  font-size: 12px;
+}
+
+.comment-content {
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.pagination button {
+  padding: 6px 14px;
+  background-color: white;
+  color: #4a90e2;
+  border: 1px solid #4a90e2;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.pagination button:disabled {
+  color: #aaa;
+  border-color: #ddd;
+  cursor: not-allowed;
+}
+
+.page-info {
+  color: #555;
+  font-size: 13px;
+}
